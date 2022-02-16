@@ -1,0 +1,7 @@
+{
+    "editor.formatOnSave": true,
+    "eslint.packageManager": "yarn",
+    "eslint.run": "onSave",
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
+    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
+}
