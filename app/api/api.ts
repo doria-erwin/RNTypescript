@@ -20,10 +20,10 @@ const API = axios.create({
 const serialize = (data: Object) => {
     return Object.keys(data)
         .map((k, i) => {
-            const value = Object.values(data)[i];
-            return `${encodeURIComponent(k)}=${
-                value ? encodeURIComponent(value) : ''
-            }`;
+            const value = encodeURIComponent(Object.values(data)[i]);
+            const key = encodeURIComponent(k);
+
+            return `${key}=${value ? value : ''}`;
         })
         .join('&');
 };
@@ -79,16 +79,15 @@ export default async function API_REQUEST(
 }
 
 export async function EXTERNAL_API_REQUEST(
-    // eslint-disable-next-line @typescript-eslint/no-shadow
     apiUrl: string,
     endpoint: string,
     data?: API_DATA,
 ) {
     const url = `${apiUrl}${endpoint}${data ? `?${serialize(data)}` : ''}`;
-    const response = await fetch(url);
+    const response = await API.get(url);
 
     if (response.status === 200) {
-        return await response.json();
+        return await response.data;
     } else {
         const error = new Error(response.statusText);
         throw { ...error, response };
