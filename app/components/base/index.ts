@@ -8,4 +8,5 @@ import './BottomSheet/BottomSheet.stories';
 import './Choice/Choice.stories';
 import './Switch/Switch.stories';
 import './Slider/Slider.stories';
+import './ImageCache/ImageCache.stories';
 // STORY IMPORT CODE GENERATOR INDICATOR DO NOT DELETE

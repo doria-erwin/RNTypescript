@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, Image } from 'react-native';
+import { View } from 'react-native';
 import type { BorderRadius, AvatarSize, Color } from '~/types';
 import { colors } from '~/styles';
 import Typography from '~/components/base/Typography';
+import ImageCache from '../ImageCache';
 import styles from './avatarStyles';
 
 type Props = {
@@ -87,9 +88,9 @@ const Avatar: React.FC<Props> = ({
                 />
             )}
             {uri && (
-                <Image
+                <ImageCache
                     style={[styles.avatar, imageStyle, avatarStyle]}
-                    source={{ uri }}
+                    uri={uri}
                 />
             )}
         </View>

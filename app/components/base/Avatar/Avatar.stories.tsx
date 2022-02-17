@@ -20,7 +20,7 @@ storiesOf('Avatar', module)
     .add('uri', () => <Avatar uri={text('uri', 'https://picsum.photos/200')} />)
     .add('size', () => (
         <Avatar
-            uri="https://picsum.photos/200"
+            uri="https://picsum.photos/201"
             size={select(
                 'size',
                 {
@@ -35,19 +35,19 @@ storiesOf('Avatar', module)
     ))
     .add('isCircle', () => (
         <Avatar
-            uri="https://picsum.photos/200"
+            uri="https://picsum.photos/202"
             isCircle={boolean('isCircle', true)}
         />
     ))
     .add('isBordered', () => (
         <Avatar
-            uri="https://picsum.photos/200"
+            uri="https://picsum.photos/203"
             isBordered={boolean('isBordered', true)}
         />
     ))
     .add('borderWidth', () => (
         <Avatar
-            uri="https://picsum.photos/200"
+            uri="https://picsum.photos/204"
             isBordered={boolean('isBordered', true)}
             borderWidth={number('borderWidth', 3)}
             borderColor={select('borderColor', Color, Color.base)}
@@ -55,7 +55,7 @@ storiesOf('Avatar', module)
     ))
     .add('borderColor', () => (
         <Avatar
-            uri="https://picsum.photos/200"
+            uri="https://picsum.photos/205"
             isBordered={boolean('isBordered', true)}
             borderColor={select('borderColor', Color, Color.base)}
         />
