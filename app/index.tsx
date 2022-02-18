@@ -1,19 +1,17 @@
 import * as React from 'react';
-import { Platform, Text, UIManager } from 'react-native';
+import { Text, UIManager } from 'react-native';
 import { Provider } from 'react-redux';
 import AppWrapper from './AppWrapper';
 import { store, persistor } from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
+import { isAndroid } from './hooks/platform';
 
 // Text.defaultProps = {
 //     ...Text.defaultProps,
 //     allowFontScaling: false
 // };
 
-if (
-    Platform.OS === 'android' &&
-    UIManager.setLayoutAnimationEnabledExperimental
-) {
+if (isAndroid && UIManager.setLayoutAnimationEnabledExperimental) {
     UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 

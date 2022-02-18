@@ -36,9 +36,9 @@ import styles from './${componentName}Styles';
 
 type Props = {
     // TODO add props
-}
+};
 
-const ${ComponentName}: React.FC<Props> = ({ }) => {
+const ${ComponentName}: React.FC<Props> = ({}) => {
     return (
         <View style={styles.container}>
             <Typography>${ComponentName}</Typography>
@@ -54,13 +54,13 @@ import ${ComponentName} from './${ComponentName}';
 
 type Props = {
     // TODO add props
-}
+};
 
 const ${ComponentName}Container: React.FC<Props> = ({ }) => {
     return (
         <${ComponentName} />
     );
-}
+};
 
 export default ${ComponentName}Container;
 `;
@@ -69,8 +69,8 @@ export default ${ComponentName}Container;
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
-    }
+        flex: 1,
+    },
 });
 
 export default styles;

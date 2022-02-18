@@ -14,7 +14,9 @@ const LoginContainer: React.FC<any> = () => {
         });
     };
 
-    const handleLogin = () => {};
+    const handleLogin = () => {
+        throw new Error('Test error');
+    };
 
     return (
         <LoginScreen
