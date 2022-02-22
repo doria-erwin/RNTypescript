@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View } from 'react-native';
 import Typography from '~/components/base/Typography/Typography';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 function App() {
+
     return (
         <View>
             <Icon name="rocket" />

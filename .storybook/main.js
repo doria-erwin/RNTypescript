@@ -1,5 +1,5 @@
 module.exports = {
-  "stories": [
+  stories: [
     // TODO explore more on this samples
     // "../stories/**/*.stories.mdx",
     // "../stories/**/*.stories.@(js|jsx|ts|tsx)"
@@ -7,8 +7,9 @@ module.exports = {
     "../app/components/**/**/*.stories.mdx",
     "../app/components/**/**/*.stories.@(js|jsx|ts|tsx)"
   ],
-  "addons": [
+  addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials"
-  ]
+  ],
+  presets: ['@storybook/preset-typescript'],
 }

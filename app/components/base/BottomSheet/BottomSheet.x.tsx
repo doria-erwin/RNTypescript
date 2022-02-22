@@ -1,7 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, { createRef } from 'react';
 import { storiesOf } from '@storybook/react-native';
-import CenterView from '../CenterView';
 import BottomSheet from '.';
 import Typography from '../Typography';
 import Sheet from 'react-native-raw-bottom-sheet';
@@ -53,5 +52,4 @@ const SheetFC: React.FC<Props> = ({}) => {
 };
 
 storiesOf('BottomSheet', module)
-    .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
     .add('children', () => <SheetFC />);
