@@ -5,7 +5,7 @@ import { colorVariants } from '~/styles/';
 import Typography from '../Typography/Typography';
 import styles from './buttonStyles';
 
-type Props = {
+export type Props = {
     children?: JSX.Element;
     onPress: () => void;
     style?: Object;

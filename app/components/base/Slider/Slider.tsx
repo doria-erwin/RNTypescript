@@ -4,7 +4,7 @@ import Sldr from '@ptomasroos/react-native-multi-slider';
 import styles from './sliderStyles';
 import { colors } from '~/styles';
 
-type Props = {
+export type Props = {
     values: number[] | undefined;
     onChange: (value: number | number[]) => void;
     min?: number;

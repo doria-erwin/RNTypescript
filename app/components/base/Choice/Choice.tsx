@@ -5,7 +5,7 @@ import type { Choice as Chc, ChoiceVariant, ChoiceValue } from '~/types';
 import { borderRadius, colorVariants } from '~/styles';
 import styles from './choiceStyles';
 
-type Props = {
+export type Props = {
     checked: boolean;
     variant?: ChoiceVariant;
     onChange: (value: ChoiceValue) => void;

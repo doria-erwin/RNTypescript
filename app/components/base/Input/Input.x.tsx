@@ -2,7 +2,6 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { storiesOf } from '@storybook/react-native';
 import { text, select, boolean } from '@storybook/addon-knobs';
-import CenterView from '~/components/base/CenterView';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Input from '.';
 import styles from './inputStyles';
@@ -13,7 +12,6 @@ const onChange = (text: string) => {
 };
 
 storiesOf('Input', module)
-    .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
     .add('value', () => (
         <Input onChange={onChange} value={text('value', 'value')} />
     ))

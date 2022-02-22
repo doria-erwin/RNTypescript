@@ -34,7 +34,7 @@ import { View } from 'react-native';
 import Typography from '~/components/base/Typography/Typography';
 import styles from './${componentName}Styles';
 
-type Props = {
+export type Props = {
     // TODO add props
 };
 
@@ -77,13 +77,33 @@ export default styles;
 `;
 
     const storyBody = `import React from 'react';
-import { storiesOf } from '@storybook/react-native';
-import CenterView from '~/components/base/CenterView';
-import ${ComponentName} from '.';
+import type { Props } from './${ComponentName}';
+import App${ComponentName} from './${ComponentName}';
+import { Meta, Story } from '@storybook/react';
+import Typography from '../Typography';
+    
+const config = {
+    title: '${ComponentName}',
+    component: App${ComponentName},
+    argTypes: {
+        children: {
+            description: 'Children of ${ComponentName}',
+            type: { name: 'object', required: false },
+            control: {
+                type: 'object',
+            },
+        },
+    },
+};
+    
+export default config as Meta;
 
-// Todo add Stories
-storiesOf('${ComponentName}', module)
-.addDecorator(getStory => <CenterView>{getStory()}</CenterView>);
+const Template: Story<Props> = args => <App${ComponentName} {...args} />;
+
+export const ${ComponentName} = Template.bind({});
+${ComponentName}.args = {
+    children: <Typography color='light'>${ComponentName}</Typography>
+};
 `;
 
     makey.createFile(
@@ -111,12 +131,5 @@ storiesOf('${ComponentName}', module)
     makey.createFile(
         `./app/components/${compType}/${ComponentName}/index.ts`,
         `export { default } from './${ComponentName}${smartComponent ? 'Container' : ''}';\n`
-    );
-
-    await makey.editFile(`./app/components/${compType}/index.ts`, (existingBody) =>
-        existingBody.replace(
-            `// STORY IMPORT CODE GENERATOR INDICATOR DO NOT DELETE`,
-            `import './${ComponentName}/${ComponentName}.stories';\n// STORY IMPORT CODE GENERATOR INDICATOR DO NOT DELETE`
-        ),
     );
 }

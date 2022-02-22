@@ -4,7 +4,7 @@ import type { BorderRadius, Color } from '~/types';
 import { colors } from '~/styles';
 import styles from './cardStyles';
 
-type Props = {
+export type Props = {
     children: ReactNode;
     backgroundColor?: Color;
     borderRadius?: BorderRadius;

@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
-import CenterView from '~/components/base/CenterView';
 import Slider from '.';
 import { color, number } from '@storybook/addon-knobs';
 import { colors } from '~/styles';
@@ -10,7 +9,6 @@ const onChange = (value: number | number[]) => {
 };
 
 storiesOf('Slider', module)
-    .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
     .add('values', () => (
         <Slider values={[number('values', 0)]} onChange={onChange} />
     ))

@@ -1,58 +1,107 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react-native';
-import CenterView from '~/components/base/CenterView';
-import Card from '.';
-import Typography from '~/components/base/Typography';
-import { boolean, number, select } from '@storybook/addon-knobs';
+import type { Props } from './Card';
+import AppCard from './Card';
+import { Meta, Story } from '@storybook/react';
 import { Color } from '~/enums';
+import Typography from '../Typography';
 
-storiesOf('Card', module)
-    .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
-    .add('children', () => (
-        <Card>
-            <Typography color="light">Card</Typography>
-        </Card>
-    ))
-    .add('isBordered', () => (
-        <Card isBordered={boolean('isBordered', true)} borderColor="dark">
-            <Typography color="light">Card</Typography>
-        </Card>
-    ))
-    .add('borderColor', () => (
-        <Card
-            isBordered={true}
-            borderColor={select('borderColor', Color, Color.dark)}
-        >
-            <Typography color="light">Card</Typography>
-        </Card>
-    ))
-    .add('borderWidth', () => (
-        <Card
-            isBordered={true}
-            borderColor={Color.dark}
-            borderWidth={number('borderWidth', 1)}
-        >
-            <Typography color="light">Card</Typography>
-        </Card>
-    ))
-    .add('borderRadius', () => (
-        <Card
-            borderRadius={select(
-                'borderRadius',
-                {
-                    '4': 4,
-                    '6': 6,
-                    '9': 9,
-                    '12': 12,
+const config = {
+    title: 'Card',
+    component: AppCard,
+    argTypes: {
+        children: {
+            description: 'Children of card',
+            type: { name: 'object', required: false },
+            control: {
+                type: 'object',
+            },
+        },
+        isBordered: {
+            description: 'Bordered card',
+            defaultValue: false,
+            type: { name: 'boolean', required: false },
+            table: {
+                defaultValue: {
+                    summary: false,
                 },
-                4,
-            )}
-        >
-            <Typography color="light">Card</Typography>
-        </Card>
-    ))
-    .add('backgroundColor', () => (
-        <Card backgroundColor={select('backgroundColor', Color, Color.base)}>
-            <Typography color="light">Card</Typography>
-        </Card>
-    ));
+            },
+            control: {
+                type: 'boolean',
+            },
+        },
+        borderWidth: {
+            description: 'Border width of avatar',
+            defaultValue: 1,
+            type: {
+                name: 'number', required: false
+            },
+            table: {
+                defaultValue: {
+                    summary: 1,
+                },
+            },
+            control: {
+                type: 'number',
+            },
+        },
+        borderColor: {
+            description: 'Border color of avatar',
+            defaultValue: Color.light,
+            type: {
+                name: 'enum', required: false
+            },
+            table: {
+                defaultValue: {
+                    summary: Color.light,
+                },
+            },
+            control: {
+                type: 'select',
+                options: Color
+            }
+        },
+        backgroundColor: {
+            description: 'Background color of card',
+            defaulValue: Color.base,
+            type: {
+                name: 'enum',
+                required: false
+            },
+            table: {
+                defaultValue: {
+                    summary: Color.base,
+                },
+            },
+            control: {
+                type: 'select',
+                options: Color
+            }
+        },
+        borderRadius: {
+            description: 'Border radius of card',
+            defaultValue: 4,
+            type: {
+                name: 'enum',
+                required: false
+            },
+            table: {
+                defaultValue: {
+                    summary: 4,
+                },
+            },
+            control: {
+                type: 'select',
+                options: [4, 6, 9, 12]
+            }
+        }
+    },
+};
+
+export default config as Meta;
+
+const Template: Story<Props> = args => <AppCard {...args} />;
+
+export const Card = Template.bind({});
+Card.args = {
+    children: <Typography color='light'>Card</Typography>
+};

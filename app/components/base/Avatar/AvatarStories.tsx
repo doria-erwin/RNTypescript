@@ -1,9 +1,8 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Image } from 'react-native';
 import type { BorderRadius, AvatarSize, Color } from '~/types';
 import { colors } from '~/styles';
 import Typography from '~/components/base/Typography';
-import ImageCache from '../ImageCache';
 import styles from './avatarStyles';
 
 export type Props = {
@@ -72,6 +71,7 @@ const Avatar: React.FC<Props> = ({
         ...borderedStyle,
     };
 
+
     const imageStyle = {
         borderRadius: borderRadiusSize,
         resizeMode: 'contain',
@@ -89,11 +89,11 @@ const Avatar: React.FC<Props> = ({
                     backgroundColor={backgroundColor}
                 />
             )}
-            {uri && <ImageCache
+            {uri && <Image
                 style={[styles.avatar,
                     imageStyle,
                     avatarStyle]}
-                uri={uri}
+                source={{ uri }}
             />}
         </View>
     );

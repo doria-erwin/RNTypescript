@@ -1,48 +1,34 @@
-import React, { useState, useEffect } from 'react';
-import { storiesOf } from '@storybook/react-native';
-import CenterView from '~/components/base/CenterView';
-import type { Choice as Chc } from '~/types';
-import { boolean, select } from '@storybook/addon-knobs';
-import { ChoiceVariant, ChoiceType } from '~/enums';
-import Choice from '.';
+import React from 'react';
+import type { Props } from './Choice';
+import AppChoice from './Choice';
+import { Meta, Story } from '@storybook/react';
+import { ChoiceType, Color } from '~/enums';
 
-type Props = {
-    isChecked?: boolean;
-    variant?: ChoiceVariant;
-    type?: Chc;
+const config = {
+    title: 'Choice',
+    component: AppChoice,
+    argTypes: {
+        type: {
+            description: "Choice type",
+            type: { name: 'enum', required: false },
+            defaultValue: 'check',
+            table: {
+                defaultValue: {
+                    summary: 'check',
+                },
+            },
+            control: {
+                type: 'select',
+                options: ChoiceType
+            },
+        }
+    },
 };
 
-const Check: React.FC<Props> = ({ isChecked = false, variant, type }) => {
-    const [checked, setChecked] = useState(isChecked);
+export default config as Meta;
 
-    const onChange = (value: any) => {
-        console.log(value);
-        setChecked(checked => !checked);
-    };
+const Template: Story<Props> = args => <AppChoice {...args} />;
 
-    useEffect(() => {
-        setChecked(isChecked);
-    }, [isChecked]);
-
-    return (
-        <Choice
-            onChange={onChange}
-            checked={checked}
-            variant={variant}
-            type={type}
-            value={1}
-        />
-    );
+export const Choice = Template.bind({});
+Choice.args = {
 };
-
-storiesOf('Choice', module)
-    .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
-    .add('type', () => (
-        <Check type={select('type', ChoiceType, ChoiceType.check)} />
-    ))
-    .add('checked', () => <Check isChecked={boolean('checked', true)} />)
-    .add('variant', () => (
-        <Check
-            variant={select('variant', ChoiceVariant, ChoiceVariant.secondary)}
-        />
-    ));

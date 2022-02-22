@@ -1,90 +1,163 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react-native';
-import { select, boolean, text, number } from '@storybook/addon-knobs';
-import CenterView from '~/components/base/CenterView';
-import Avatar from '.';
+import type { Props } from './AvatarStories';
+import AppAvatar from './AvatarStories';
+import { Meta, Story } from '@storybook/react';
 import { Color } from '~/enums';
 
-storiesOf('Avatar', module)
-    .addDecorator(
-        (
-            getStory: () =>
-                | boolean
-                | React.ReactChild
-                | React.ReactFragment
-                | React.ReactPortal
-                | null
-                | undefined,
-        ) => <CenterView>{getStory()}</CenterView>,
-    )
-    .add('uri', () => <Avatar uri={text('uri', 'https://picsum.photos/200')} />)
-    .add('size', () => (
-        <Avatar
-            uri="https://picsum.photos/201"
-            size={select(
-                'size',
-                {
-                    '40': 40,
-                    '60': 60,
-                    '80': 80,
-                    '90': 90,
+const config = {
+    title: 'Avatar',
+    component: AppAvatar,
+    argTypes: {
+        uri: {
+            description: 'Avatar uri',
+            defaultValue: 'https://picsum.photos/200',
+            type: {
+                name: 'string', required: false,
+            },
+            control: {
+                type: 'text',
+            },
+            table: {
+                defaultValue: {
+                    summary: 'https://picsum.photos/200',
                 },
-                40,
-            )}
-        />
-    ))
-    .add('isCircle', () => (
-        <Avatar
-            uri="https://picsum.photos/202"
-            isCircle={boolean('isCircle', true)}
-        />
-    ))
-    .add('isBordered', () => (
-        <Avatar
-            uri="https://picsum.photos/203"
-            isBordered={boolean('isBordered', true)}
-        />
-    ))
-    .add('borderWidth', () => (
-        <Avatar
-            uri="https://picsum.photos/204"
-            isBordered={boolean('isBordered', true)}
-            borderWidth={number('borderWidth', 3)}
-            borderColor={select('borderColor', Color, Color.base)}
-        />
-    ))
-    .add('borderColor', () => (
-        <Avatar
-            uri="https://picsum.photos/205"
-            isBordered={boolean('isBordered', true)}
-            borderColor={select('borderColor', Color, Color.base)}
-        />
-    ))
-    .add('backgroundColor', () => (
-        <Avatar
-            initials="OL"
-            backgroundColor={select('backgroundColor', Color, Color.base)}
-        />
-    ))
-    .add('initials', () => (
-        <Avatar
-            initials={text('initials', 'OL')}
-            initialsColor={select('initialsColor', Color, Color.light)}
-        />
-    ))
-    .add('borderRadius', () => (
-        <Avatar
-            initials={text('initials', 'OL')}
-            initialsColor={select('initialsColor', Color, Color.light)}
-            borderRadius={select(
-                'borderRadius',
-                {
-                    '4': 4,
-                    '6': 6,
-                    '9': 9,
-                    '12': 12,
+            },
+        },
+        size: {
+            description: 'Avatar size',
+            defaultValue: 40,
+            type: {
+                name: 'enum',
+                required: false
+            },
+            table: {
+                defaultValue: { summary: 40 },
+            },
+            control: {
+                type: 'select',
+                options: [
+                    40,
+                    60,
+                    80,
+                    90
+                ],
+            },
+        },
+        isCircle: {
+            description: 'Avatar circle',
+            defaultValue: false,
+            type: { name: 'boolean', required: false },
+            table: {
+                defaultValue: {
+                    summary: false,
                 },
-                4,
-            )}
-        />
-    ));
+            },
+            control: {
+                type: 'boolean',
+            },
+        },
+        isBordered: {
+            description: 'Bordered avatar',
+            defaultValue: false,
+            type: { name: 'boolean', required: false },
+            table: {
+                defaultValue: {
+                    summary: false,
+                },
+            },
+            control: {
+                type: 'boolean',
+            },
+        },
+        borderWidth: {
+            description: 'Border width of avatar',
+            defaultValue: 3,
+            type: {
+                name: 'number', required: false
+            },
+            table: {
+                defaultValue: {
+                    summary: 3,
+                },
+            },
+            control: {
+                type: 'number',
+            },
+        },
+        borderColor: {
+            description: 'Border color of avatar',
+            defaultValue: Color.base,
+            type: {
+                name: 'enum', required: false
+            },
+            table: {
+                defaultValue: {
+                    summary: Color.base,
+                },
+            },
+            control: {
+                type: 'select',
+                options: Color
+            }
+        },
+        backgroundColor: {
+            description: 'Background color of avatar',
+            defaulValue: Color.base,
+            type: {
+                name: 'enum',
+                required: false
+            },
+            table: {
+                defaultValue: {
+                    summary: Color.base,
+                },
+            },
+            control: {
+                type: 'select',
+                options: Color
+            }
+        },
+        initials: {
+            description: 'Name initials',
+            defaulValue: undefined,
+            type: {
+                name: 'string',
+                required: false
+            },
+            table: {
+                defaultValue: {
+                    summary: undefined,
+                },
+            },
+            control: {
+                type: 'text',
+            }
+        },
+        borderRadius: {
+            description: 'Border radius of avatar',
+            defaultValue: 4,
+            type: {
+                name: 'enum',
+                required: false
+            },
+            table: {
+                defaultValue: {
+                    summary: 4,
+                },
+            },
+            control: {
+                type: 'select',
+                options: [4, 6, 9, 12]
+            }
+        }
+    },
+};
+
+export default config as Meta;
+
+const Template: Story<Props> = args => <AppAvatar {...args} />;
+
+export const Avatar = Template.bind({});
+Avatar.args = {
+    uri: 'https://picsum.photos/200',
+};
