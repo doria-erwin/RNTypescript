@@ -7,7 +7,7 @@ import { colors } from '~/styles';
 import type { RefSheet } from '~/types';
 import styles from './bottomSheetStyles';
 
-type Props = {
+export type Props = {
     children: ReactNode;
     onSubmit?: () => void;
     onCancel?: () => void;

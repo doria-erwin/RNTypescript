@@ -1,21 +1,52 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react-native';
-import CenterView from '~/components/base/CenterView';
-import Switch from '.';
-import { boolean, color } from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
-import { colors } from '~/styles';
+import type { Props } from './Switch';
+import AppSwitch from './Switch';
+import { Meta, Story } from '@storybook/react';
 
-storiesOf('Switch', module)
-    .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
-    .add('isOn', () => (
-        <Switch isOn={boolean('isOn', true)} onChange={action('onChange')} />
-    ))
-    .add('backGroundColor', () => (
-        <Switch
-            isOn={boolean('isOn', true)}
-            backGroundColorOff={color('backGroundColorOff', colors.toggleOff)}
-            backGroundColorOn={color('backGroundColorOn', colors.toggleOn)}
-            onChange={action('onChange')}
-        />
-    ));
+const config = {
+    title: 'Base',
+    component: AppSwitch,
+    argTypes: {
+        onChange: (value: number | string | boolean | undefined) => {},
+        isOn: {
+            description: "Determine if it's on or off",
+            defaultValue: false,
+            type: { name: 'boolean', required: true },
+            table: {
+                defaultValue: {
+                    summary: false,
+                },
+            },
+        },
+        backGroundColorOff: {
+            description: "Background color when it's off",
+            type: {
+                name: 'color',
+                required: false
+            },
+            control: {
+                type: 'color',
+            }
+
+        },
+        backGroundColorOn: {
+            description: "Background color when it's on",
+            type: {
+                name: 'color',
+                required: false
+            },
+            control: {
+                type: 'color',
+            }
+
+        },
+    }
+};
+
+export default config as Meta;
+
+const Template: Story<Props> = args => <AppSwitch {...args} />;
+
+export const Switch = Template.bind({});
+Switch.args = {
+};

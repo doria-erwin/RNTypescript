@@ -4,7 +4,7 @@ import Sldr from '@ptomasroos/react-native-multi-slider';
 import styles from './sliderStyles';
 import { colors } from '~/styles';
 
-type Props = {
+export type Props = {
     values: number[] | undefined;
     onChange: (value: number | number[]) => void;
     min?: number;
@@ -14,6 +14,7 @@ type Props = {
     unselectedSlider?: string;
     circleColor?: string;
     markerColor?: string;
+    sliderLength?: number
 };
 
 type MarkerProps = {
@@ -39,6 +40,7 @@ const Slider: React.FC<Props> = ({
     unselectedSlider = colors.dark,
     circleColor = colors.light,
     markerColor = colors.selectedSlider,
+    sliderLength
 }) => {
     const selectedStyle = {
         backgroundColor: selectedSlider,
@@ -67,6 +69,7 @@ const Slider: React.FC<Props> = ({
                 trackStyle={styles.track}
                 selectedStyle={selectedStyle}
                 unselectedStyle={unSelectedStyle}
+                sliderLength={sliderLength}
                 customMarker={() => (
                     <Marker
                         markerStyle={[styles.marker, markerStyle]}

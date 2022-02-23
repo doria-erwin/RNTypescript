@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import AppWrapper from './AppWrapper';
 import { store, persistor } from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
-import { isAndroid } from './hooks/platform';
+import { isAndroid } from './utils/platform';
 
 // Text.defaultProps = {
 //     ...Text.defaultProps,

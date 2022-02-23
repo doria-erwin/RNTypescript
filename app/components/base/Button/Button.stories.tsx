@@ -1,88 +1,134 @@
 import React from 'react';
-import { action } from '@storybook/addon-actions';
-import { select, boolean, color } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react-native';
-import Button from '.';
-import { ButtonVariant, FontWeight } from '~/enums';
-import CenterView from '~/components/base/CenterView';
+import type { Props } from './Button';
+import AppButton from './Button';
+import { Meta, Story } from '@storybook/react';
 
-storiesOf('Button', module)
-    .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
-    .add('variant', () => (
-        <Button
-            label="Click me"
-            onPress={action('click me')}
-            variant={select('variant', ButtonVariant, ButtonVariant.primary)}
-        />
-    ))
-    .add('isRounded', () => (
-        <Button
-            label="Click me"
-            onPress={action('click me')}
-            variant={ButtonVariant.primary}
-            isRounded={boolean('isRounded', true)}
-        />
-    ))
-    .add('isOutline', () => (
-        <Button
-            label="Click me"
-            onPress={action('click me')}
-            variant={ButtonVariant.primary}
-            isOutline={boolean('isOutline', true)}
-        />
-    ))
-    .add('disabled', () => (
-        <Button
-            label="Click me"
-            onPress={action('click me')}
-            variant={ButtonVariant.primary}
-            disabled={boolean('disabled', true)}
-        />
-    ))
-    .add('isProcessing', () => (
-        <Button
-            label="Click me"
-            onPress={action('click me')}
-            variant={ButtonVariant.primary}
-            isProcessing={boolean('isProcessing', true)}
-        />
-    ))
-    .add('fontWeight', () => (
-        <Button
-            label="Click me"
-            onPress={action('click me')}
-            variant={ButtonVariant.primary}
-            fontWeight={select('fontWeight', FontWeight, FontWeight.regular)}
-        />
-    ))
-    .add('fontSize', () => (
-        <Button
-            label="Click me"
-            onPress={action('click me')}
-            variant={ButtonVariant.primary}
-            fontSize={select(
-                'fontSize',
-                {
-                    '40': 40,
-                    '26': 26,
-                    '24': 24,
-                    '22': 22,
-                    '20': 20,
-                    '18': 18,
-                    '16': 16,
-                    '14': 14,
-                    '12': 12,
-                    '10': 10,
+const config = {
+    title: 'Base',
+    component: AppButton,
+    argTypes: {
+        children: {
+            description: 'Button children. Use `label` if text only.',
+            type: { name: 'object', required: false },
+            control: {
+                type: 'object',
+            },
+        },
+        onPress: () => {},
+        style: {
+            description: 'Button styling',
+            type: { name: 'object', required: false },
+        },
+        isRounded: {
+            description: 'Prop to make edges rounded',
+            defaultValue: false,
+            type: { name: 'boolean', required: false },
+            table: {
+                defaultValue: {
+                    summary: false,
                 },
-                12,
-            )}
-        />
-    ))
-    .add('fontColor', () => (
-        <Button
-            label="Click me"
-            onPress={action('click me')}
-            variant={ButtonVariant.primary}
-            fontColor={color('fontColor', '#fff')}
-        />
-    ));
+            },
+            control: {
+                type: 'boolean',
+            },
+        },
+        isOutline: {
+            description: 'Prop to use button outline',
+            defaultValue: false,
+            type: { name: 'boolean', required: false },
+            table: {
+                defaultValue: {
+                    summary: false,
+                },
+            },
+            control: {
+                type: 'boolean',
+            },
+        },
+        variant: {
+            description:
+                'Button Color: The color should be declared first in `./app/styles/index`, under colorVariants. Then add it in here as options.',
+            defaultValue: 'primary',
+            type: { name: 'enum', required: false },
+            table: {
+                defaultValue: { summary: 'primary' },
+            },
+            control: {
+                type: 'select',
+                options: [
+                    'primary',
+                    'secondary',
+                    'success',
+                    'warning',
+                    'danger',
+                ],
+            },
+        },
+        disabled: {
+            description: 'Prop to make button disable',
+            defaultValue: false,
+            type: { name: 'boolean', required: false },
+            table: {
+                defaultValue: {
+                    summary: false,
+                },
+            },
+            control: {
+                type: 'boolean',
+            },
+        },
+        isProcessing: {
+            description: 'Prop to show loader',
+            defaultValue: false,
+            type: { name: 'boolean', required: false },
+            table: {
+                defaultValue: {
+                    summary: false,
+                },
+            },
+            control: {
+                type: 'boolean',
+            },
+        },
+        label: {
+            description: 'Button text',
+            type: { name: 'string', required: false },
+            control: {
+                type: 'text',
+            },
+        },
+        fontWeight: {
+            description: 'Font Weight',
+            defaultValue: 'regular',
+            type: { name: 'enum', required: false },
+            table: {
+                defaultValue: { summary: 'regular' },
+            },
+            control: {
+                type: 'inline-radio',
+                options: ['light', 'regular', 'semiBold', 'bold', 'black'],
+            },
+        },
+        fontSize: {
+            description: 'Font Size',
+            defaultValue: 16,
+            type: { name: 'enum', required: false },
+            table: {
+                defaultValue: { summary: 16 },
+            },
+            control: {
+                type: 'select',
+                options: [40, 26, 24, 22, 20, 18, 16, 14, 12, 10],
+            },
+        },
+    },
+};
+
+export default config as Meta;
+
+const Template: Story<Props> = args => <AppButton {...args} />;
+
+export const Button = Template.bind({});
+Button.args = {
+    label: 'Button',
+};

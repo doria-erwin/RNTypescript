@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Typography from '~/components/base/Typography/Typography';
 import styles from './headerLeftStyles';
 
-type Props = {
+export type Props = {
     title?: string;
     isWithBack?: boolean;
     isMain?: boolean;

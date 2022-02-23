@@ -1,17 +1,21 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Image } from 'react-native';
 import styles from './imageCacheStyles';
 import FastImage from 'react-native-fast-image';
 
-type Props = {
+export type Props = {
     uri: string;
     style?: Object;
+    isStoryBook?: boolean
 };
 
-const ImageCache: React.FC<Props> = ({ uri, style }) => {
+const ImageCache: React.FC<Props> = ({ uri, style, isStoryBook }) => {
     return (
         <View style={styles.container}>
-            <FastImage style={style} source={{ uri }} />
+            {
+                isStoryBook ? <Image style={style} source={{ uri }} />
+                    : <FastImage style={style} source={{ uri }} />
+            }
         </View>
     );
 };

@@ -4,9 +4,9 @@ import ToggleSwitch from 'toggle-switch-react-native';
 import { colors } from '~/styles';
 import styles from './switchStyles';
 
-type Props = {
+export type Props = {
     isOn: boolean;
-    onChange: () => void;
+    onChange: (value: string | number | boolean | undefined) => void;
     backGroundColorOff?: string;
     backGroundColorOn?: string;
 };

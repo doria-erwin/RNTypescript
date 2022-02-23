@@ -1,43 +1,86 @@
 import React from 'react';
-import { select } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react-native';
-import Typography from '.';
+import type { Props } from './Typography';
+import AppTypography from './Typography';
+import { Meta, Story } from '@storybook/react';
 import { Color, FontWeight } from '~/enums';
-import CenterView from '~/components/base/CenterView';
 
-storiesOf('Typography', module)
-    .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
-    .add('size', () => (
-        <Typography
-            size={select(
-                'fontSize',
-                {
-                    '40': 40,
-                    '26': 26,
-                    '24': 24,
-                    '22': 22,
-                    '20': 20,
-                    '18': 18,
-                    '16': 16,
-                    '14': 14,
-                    '12': 12,
-                    '10': 10,
+const config = {
+    title: 'Base',
+    component: AppTypography,
+    argTypes: {
+        children: {
+            description: 'Typography children',
+        },
+        fontWeight: {
+            description: "Font weight of typography",
+            type: {
+                name: 'enum',
+                required: false
+            },
+            defaultValue: FontWeight.regular,
+            table: {
+                defaultValue: {
+                    summary: FontWeight.regular,
                 },
-                12,
-            )}
-        >
-            Typography
-        </Typography>
-    ))
-    .add('color', () => (
-        <Typography color={select('color', Color, Color.base)}>
-            Typography
-        </Typography>
-    ))
-    .add('fontWeight', () => (
-        <Typography
-            fontWeight={select('fontWeight', FontWeight, FontWeight.regular)}
-        >
-            Typography
-        </Typography>
-    ));
+            },
+            control: {
+                name: 'select',
+                option: FontWeight
+            }
+        },
+        size: {
+            description: "Size of typography",
+            type: {
+                name: 'enum',
+                required: false
+            },
+            defaultValue: 16,
+            table: {
+                defaultValue: {
+                    summary: 16,
+                },
+            },
+            control: {
+                name: 'select',
+                options: [
+                    40,
+                    26,
+                    24,
+                    22,
+                    20,
+                    18,
+                    16,
+                    14,
+                    12,
+                    10,
+                ]
+            }
+        },
+        color: {
+            description: "Color of typography",
+            type: {
+                name: 'enum',
+                required: false
+            },
+            defaultValue: Color.base,
+            table: {
+                defaultValue: {
+                    summary: Color.base,
+                },
+            },
+            control: {
+                name: 'select',
+                option: Color
+            }
+        }
+    }
+};
+
+export default config as Meta;
+
+const Template: Story<Props> = args => <AppTypography {...args} />;
+
+export const Typography = Template.bind({});
+Typography.args = {
+    children: "Typography"
+};

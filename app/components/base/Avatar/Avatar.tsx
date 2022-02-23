@@ -6,7 +6,7 @@ import Typography from '~/components/base/Typography';
 import ImageCache from '../ImageCache';
 import styles from './avatarStyles';
 
-type Props = {
+export type Props = {
     uri?: string;
     borderRadius?: BorderRadius;
     size?: AvatarSize;
@@ -19,6 +19,7 @@ type Props = {
     borderWidth?: number;
     style?: Object;
     avatarStyle?: Object;
+    isStoryBook?: boolean
 };
 
 type InitialProps = {
@@ -55,19 +56,22 @@ const Avatar: React.FC<Props> = ({
     initialsColor = 'light',
     style,
     avatarStyle,
+    isStoryBook
 }) => {
+
     const borderRadiusSize = isCircle ? size : borderRadius;
+
+    const borderedStyle = isBordered && {
+        borderWidth,
+        borderColor: colors[borderColor],
+    };
 
     const containerStyle = {
         borderRadius: borderRadiusSize,
         backgroundColor: colors[backgroundColor],
         height: size,
         width: size,
-    };
-
-    const borderedStyle = isBordered && {
-        borderWidth,
-        borderColor: colors[borderColor],
+        ...borderedStyle,
     };
 
     const imageStyle = {
@@ -80,19 +84,20 @@ const Avatar: React.FC<Props> = ({
 
     return (
         <View style={[styles.container, containerStyle, style]}>
-            {initials && (
+            {initials && !uri && (
                 <Initials
                     initials={initials}
                     initialsColor={initialsColor}
                     backgroundColor={backgroundColor}
                 />
             )}
-            {uri && (
-                <ImageCache
-                    style={[styles.avatar, imageStyle, avatarStyle]}
-                    uri={uri}
-                />
-            )}
+            {uri && <ImageCache
+                style={[styles.avatar,
+                    imageStyle,
+                    avatarStyle]}
+                uri={uri}
+                isStoryBook={isStoryBook}
+            />}
         </View>
     );
 };
