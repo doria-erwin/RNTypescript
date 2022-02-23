@@ -4,7 +4,7 @@ import type { InputSize } from '~/types';
 import { inputSize, inputContainerSize, padding } from '~/styles';
 import styles from './inputStyles';
 
-type Props = {
+export type Props = {
     value?: string;
     defaultValue?: string;
     leftIcon?: ReactNode;

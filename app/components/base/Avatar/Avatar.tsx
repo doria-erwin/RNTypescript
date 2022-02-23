@@ -19,6 +19,7 @@ export type Props = {
     borderWidth?: number;
     style?: Object;
     avatarStyle?: Object;
+    isStoryBook?: boolean
 };
 
 type InitialProps = {
@@ -55,6 +56,7 @@ const Avatar: React.FC<Props> = ({
     initialsColor = 'light',
     style,
     avatarStyle,
+    isStoryBook
 }) => {
 
     const borderRadiusSize = isCircle ? size : borderRadius;
@@ -94,6 +96,7 @@ const Avatar: React.FC<Props> = ({
                     imageStyle,
                     avatarStyle]}
                 uri={uri}
+                isStoryBook={isStoryBook}
             />}
         </View>
     );

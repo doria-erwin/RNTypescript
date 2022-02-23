@@ -3,10 +3,8 @@ import { select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react-native';
 import Typography from '.';
 import { Color, FontWeight } from '~/enums';
-import CenterView from '~/components/base/CenterView';
 
 storiesOf('Typography', module)
-    .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
     .add('size', () => (
         <Typography
             size={select(

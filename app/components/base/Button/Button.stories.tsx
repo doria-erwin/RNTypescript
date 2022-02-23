@@ -4,7 +4,7 @@ import AppButton from './Button';
 import { Meta, Story } from '@storybook/react';
 
 const config = {
-    title: 'Button',
+    title: 'Base',
     component: AppButton,
     argTypes: {
         children: {

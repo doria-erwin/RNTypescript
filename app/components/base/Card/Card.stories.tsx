@@ -6,7 +6,7 @@ import { Color } from '~/enums';
 import Typography from '../Typography';
 
 const config = {
-    title: 'Card',
+    title: 'Base',
     component: AppCard,
     argTypes: {
         children: {
@@ -30,7 +30,7 @@ const config = {
             },
         },
         borderWidth: {
-            description: 'Border width of avatar',
+            description: 'Border width of card',
             defaultValue: 1,
             type: {
                 name: 'number', required: false

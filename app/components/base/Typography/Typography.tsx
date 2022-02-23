@@ -3,7 +3,7 @@ import { Text, TextProps } from 'react-native';
 import type { FontWeight, FontSize, Color } from '~/types';
 import { colors } from '~/styles/index';
 
-interface Props extends TextProps {
+export interface Props extends TextProps {
     fontWeight?: FontWeight;
     size?: FontSize;
     style?: Object;

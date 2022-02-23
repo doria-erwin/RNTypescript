@@ -10,7 +10,7 @@ import type {
     FontWeight,
 } from '~/types';
 
-type Props = {
+export type Props = {
     data: Array<ChoiceData>;
     onChange: (value: Array<ChoiceValue> | ChoiceValue) => void;
     type?: Chc;

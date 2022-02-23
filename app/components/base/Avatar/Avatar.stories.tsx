@@ -1,13 +1,25 @@
 import React from 'react';
-import type { Props } from './AvatarStories';
-import AppAvatar from './AvatarStories';
+import type { Props } from './Avatar';
+import AppAvatar from './Avatar';
 import { Meta, Story } from '@storybook/react';
 import { Color } from '~/enums';
 
 const config = {
-    title: 'Avatar',
+    title: 'Base',
     component: AppAvatar,
     argTypes: {
+        isStoryBook: {
+            description: 'This is set to true when using storybook to prevent error from ImageCache component',
+            defaultValue: false,
+            type: {
+                name: 'boolean', required: false,
+            },
+            table: {
+                defaultValue: {
+                    summary: false,
+                },
+            },
+        },
         uri: {
             description: 'Avatar uri',
             defaultValue: 'https://picsum.photos/200',
@@ -160,4 +172,5 @@ const Template: Story<Props> = args => <AppAvatar {...args} />;
 export const Avatar = Template.bind({});
 Avatar.args = {
     uri: 'https://picsum.photos/200',
+    isStoryBook: true
 };

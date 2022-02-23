@@ -6,7 +6,7 @@ import FlashNotification from './components/modules/FlashNotification/FlashNotif
 import { useAppSelector } from './redux/hooks';
 import AppNavigation from './routes';
 import errorHandler from './hooks/errorHandler';
-import { isIOS } from './hooks/platform';
+import { isIOS } from './utils/platform';
 
 const AppWrapper: React.FC<any> = ({}) => {
     errorHandler();

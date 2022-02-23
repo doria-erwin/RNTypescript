@@ -39,6 +39,16 @@ module.exports = async ({ config }) => {
         },
     });
 
+    custom.module.rules.push({
+        test: /\.js$/,
+        loader: 'url-loader',
+        include: path.resolve(
+            __dirname,
+            '../node_modules/react-native-fast-image/dist/index.js',
+        ),
+    },
+    );
+
     custom.resolve.fallback = {
         fs: false,
         child_process: false,
