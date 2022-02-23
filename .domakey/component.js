@@ -34,7 +34,7 @@ import { View } from 'react-native';
 import Typography from '~/components/base/Typography/Typography';
 import styles from './${componentName}Styles';
 
-export type Props = {
+${!smartComponent ? 'export ' : ''}type Props = {
     // TODO add props
 };
 
@@ -52,7 +52,7 @@ export default ${ComponentName};
     const containerBody = `import React from 'react';
 import ${ComponentName} from './${ComponentName}';
 
-type Props = {
+${smartComponent ? 'export ' : ''}type Props = {
     // TODO add props
 };
 
@@ -77,13 +77,13 @@ export default styles;
 `;
 
     const storyBody = `import React from 'react';
-import type { Props } from './${ComponentName}';
-import App${ComponentName} from './${ComponentName}';
+import type { Props } from './${ComponentName}${smartComponent ? 'Container' : ''}';
+import App${ComponentName} from './${ComponentName}${smartComponent ? 'Container' : ''}';
 import { Meta, Story } from '@storybook/react';
-import Typography from '../Typography';
+import Typography from '~/components/base/Typography';
     
 const config = {
-    title: '${ComponentName}',
+    title: '${compType}',
     component: App${ComponentName},
     argTypes: {
         children: {
