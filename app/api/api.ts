@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { config } from '~/config/constants';
 import { API_METHOD, API_DATA, CONTENT_TYPE } from '~/types';
-const { apiUrl, apiTimeOut, clientCredentialMobile } = config;
 import { store } from '~/redux/store';
 import { AuthenticationState } from '~/redux/modules/authentication';
 
+const { apiUrl, apiTimeOut, clientCredentialMobile } = config;
 const APP_JSON = 'application/json';
 const APP_URL_ENCODED = 'application/x-www-form-urlencoded';
 const APP_PDF = 'application/pdf';
@@ -16,6 +16,12 @@ const API = axios.create({
     },
     timeout: apiTimeOut,
 });
+
+// API.interceptors.response.use(response => {
+//     return response;
+// }, error => {
+//     return Promise.reject(error);
+// });
 
 const serialize = (data: Object) => {
     return Object.keys(data)

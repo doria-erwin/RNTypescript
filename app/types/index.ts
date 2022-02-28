@@ -1,4 +1,4 @@
-import { RefObject } from 'react';
+import { ReactNode, RefObject } from 'react';
 import Sheet from 'react-native-raw-bottom-sheet';
 
 // Typography
@@ -123,3 +123,9 @@ export type CONTENT_TYPE =
     | 'video/3gpp2'
     | 'audio/3gpp2'
     | 'application/x-7z-compressed';
+
+export type TabItem = {
+    key: string,
+    title: string,
+    item: ReactNode
+};

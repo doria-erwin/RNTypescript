@@ -62,6 +62,7 @@ export const borderRadius = {
     lg: 9,
     xl: 12,
     xxl: 15,
+    xxxl: 20
 };
 
 export const inputSize = {
