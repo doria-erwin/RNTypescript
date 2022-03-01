@@ -47,3 +47,4 @@ export const BottomSheet = Template.bind({});
 BottomSheet.args = {
     children: <Typography>Bottom Sheet</Typography>
 };
+BottomSheet.storyName = 'BottomSheet';

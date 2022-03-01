@@ -61,3 +61,5 @@ ImageCache.args = {
         width: 100
     }
 };
+
+ImageCache.storyName = 'ImageCache';
