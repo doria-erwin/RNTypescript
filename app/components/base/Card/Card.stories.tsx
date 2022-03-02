@@ -2,7 +2,6 @@ import React from 'react';
 import type { Props } from './Card';
 import AppCard from './Card';
 import { Meta, Story } from '@storybook/react';
-import { Color } from '~/enums';
 import Typography from '../Typography';
 
 const config = {
@@ -45,36 +44,34 @@ const config = {
             },
         },
         borderColor: {
-            description: 'Border color of avatar',
-            defaultValue: Color.light,
+            description: 'Border color of card',
+            defaultValue: 'light',
             type: {
                 name: 'enum', required: false
             },
             table: {
                 defaultValue: {
-                    summary: Color.light,
+                    summary: 'light',
                 },
             },
             control: {
                 type: 'select',
-                options: Color
             }
         },
         backgroundColor: {
             description: 'Background color of card',
-            defaulValue: Color.base,
+            defaulValue: 'base',
             type: {
                 name: 'enum',
                 required: false
             },
             table: {
                 defaultValue: {
-                    summary: Color.base,
+                    summary: 'base',
                 },
             },
             control: {
                 type: 'select',
-                options: Color
             }
         },
         borderRadius: {

@@ -55,13 +55,6 @@ const config = {
             },
             control: {
                 type: 'select',
-                options: [
-                    'primary',
-                    'secondary',
-                    'success',
-                    'warning',
-                    'danger',
-                ],
             },
         },
         disabled: {

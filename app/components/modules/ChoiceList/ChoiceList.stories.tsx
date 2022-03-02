@@ -3,7 +3,6 @@ import type { Props } from './ChoiceListContainer';
 import AppChoiceList from './ChoiceListContainer';
 import { Meta, Story } from '@storybook/react';
 import { ChoiceData, ChoiceValue } from '~/types';
-import { ChoiceType, ChoiceVariant, Color, FontWeight } from '~/enums';
 
 const data: Array<ChoiceData> = [
     {
@@ -41,7 +40,6 @@ const config = {
             },
             control: {
                 type: 'select',
-                options: ChoiceType
             },
         },
         onChange: {
@@ -59,15 +57,14 @@ const config = {
                 name: 'enum',
                 required: false
             },
-            defaultValue: Color.base,
+            defaultValue: 'base',
             table: {
                 defaultValue: {
-                    summary: Color.base,
+                    summary: 'base',
                 },
             },
             control: {
                 name: 'select',
-                option: Color
             }
         },
         titleWeight: {
@@ -76,15 +73,14 @@ const config = {
                 name: 'enum',
                 required: false
             },
-            defaultValue: FontWeight.regular,
+            defaultValue: 'regular',
             table: {
                 defaultValue: {
-                    summary: FontWeight.regular,
+                    summary: 'regular',
                 },
             },
             control: {
                 name: 'select',
-                option: FontWeight
             }
         },
         variant: {
@@ -93,15 +89,14 @@ const config = {
                 name: 'enum',
                 required: false
             },
-            defaultValue: ChoiceVariant.secondary,
+            defaultValue: 'secondary',
             table: {
                 defaultValue: {
-                    summary: ChoiceVariant.secondary
+                    summary: 'secondary'
                 },
             },
             control: {
                 name: 'select',
-                options: ChoiceVariant
             }
         }
     }

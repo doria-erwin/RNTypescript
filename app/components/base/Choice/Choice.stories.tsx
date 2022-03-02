@@ -2,7 +2,6 @@ import React from 'react';
 import type { Props } from './Choice';
 import AppChoice from './Choice';
 import { Meta, Story } from '@storybook/react';
-import { ChoiceType } from '~/enums';
 
 const config = {
     title: 'Base',
@@ -19,7 +18,6 @@ const config = {
             },
             control: {
                 type: 'select',
-                options: ChoiceType
             },
         },
         checked: {

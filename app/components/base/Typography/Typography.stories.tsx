@@ -2,7 +2,6 @@ import React from 'react';
 import type { Props } from './Typography';
 import AppTypography from './Typography';
 import { Meta, Story } from '@storybook/react';
-import { Color, FontWeight } from '~/enums';
 
 const config = {
     title: 'Base',
@@ -17,15 +16,14 @@ const config = {
                 name: 'enum',
                 required: false
             },
-            defaultValue: FontWeight.regular,
+            defaultValue: 'regular',
             table: {
                 defaultValue: {
-                    summary: FontWeight.regular,
+                    summary: 'regular',
                 },
             },
             control: {
                 name: 'select',
-                option: FontWeight
             }
         },
         size: {
@@ -62,15 +60,14 @@ const config = {
                 name: 'enum',
                 required: false
             },
-            defaultValue: Color.base,
+            defaultValue: 'base',
             table: {
                 defaultValue: {
-                    summary: Color.base,
+                    summary: 'base',
                 },
             },
             control: {
                 name: 'select',
-                option: Color
             }
         }
     }

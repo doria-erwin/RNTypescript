@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { View, TextInput } from 'react-native';
+import { View, TextInput, KeyboardType } from 'react-native';
 import type { InputSize } from '~/types';
 import { inputSize, inputContainerSize, padding } from '~/styles';
 import styles from './inputStyles';
@@ -12,6 +12,7 @@ export type Props = {
     size?: InputSize;
     isPassword?: boolean;
     placeHolder?: string;
+    keyboardType?: KeyboardType
     onChange: (text: string) => void;
     onFocus?: () => void;
     onBlur?: () => void;
@@ -25,6 +26,7 @@ const Input: React.FC<Props> = ({
     size = 'lg',
     isPassword,
     placeHolder,
+    keyboardType = 'default',
     onChange,
     onFocus,
     onBlur,
@@ -40,6 +42,7 @@ const Input: React.FC<Props> = ({
                 onChangeText={onChange}
                 onFocus={onFocus}
                 onBlur={onBlur}
+                keyboardType={keyboardType}
                 style={[
                     styles.input,
                     inputSize[size],

@@ -2,7 +2,6 @@ import React from 'react';
 import type { Props } from './Avatar';
 import AppAvatar from './Avatar';
 import { Meta, Story } from '@storybook/react';
-import { Color } from '~/enums';
 
 const config = {
     title: 'Base',
@@ -98,35 +97,33 @@ const config = {
         },
         borderColor: {
             description: 'Border color of avatar',
-            defaultValue: Color.base,
+            defaultValue: 'base',
             type: {
                 name: 'enum', required: false
             },
             table: {
                 defaultValue: {
-                    summary: Color.base,
+                    summary: 'base',
                 },
             },
             control: {
                 type: 'select',
-                options: Color
             }
         },
         backgroundColor: {
             description: 'Background color of avatar',
-            defaulValue: Color.base,
+            defaulValue: 'base',
             type: {
                 name: 'enum',
                 required: false
             },
             table: {
                 defaultValue: {
-                    summary: Color.base,
+                    summary: 'base',
                 },
             },
             control: {
                 type: 'select',
-                options: Color
             }
         },
         initials: {
