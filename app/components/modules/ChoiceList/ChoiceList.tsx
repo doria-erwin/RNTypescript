@@ -5,7 +5,7 @@ import type {
     ChoiceData,
     ChoiceValue,
     Choice as Chc,
-    ChoiceVariant,
+    Variant,
     Color,
     FontWeight,
 } from '~/types';
@@ -17,7 +17,7 @@ type Props = {
     onChange: (value: ChoiceValue) => void;
     type: Chc;
     values: Array<ChoiceValue>;
-    variant?: ChoiceVariant;
+    variant?: Variant;
     leftTitleComponent?: ReactNode;
     rightTitleComponent?: ReactNode;
     titleColor?: Color;

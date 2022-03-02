@@ -6,8 +6,7 @@ export type FontWeight = 'light' | 'regular' | 'semiBold' | 'bold' | 'black';
 export type FontSize = 40 | 26 | 24 | 22 | 20 | 18 | 16 | 14 | 12 | 10;
 export type Color = 'base' | 'light' | 'dark' | 'error' | 'brand';
 
-// Button
-export type ButtonVariant =
+export type Variant =
     | 'primary'
     | 'secondary'
     | 'success'
@@ -22,14 +21,6 @@ export type BorderRadius = 4 | 6 | 9 | 12;
 export type AvatarSize = 40 | 60 | 80 | 90;
 
 export type RefSheet = RefObject<Sheet>;
-
-export type ChoiceVariant =
-    | 'primary'
-    | 'secondary'
-    | 'success'
-    | 'warning'
-    | 'danger'
-    | 'link';
 
 export type Choice = 'check' | 'radio';
 

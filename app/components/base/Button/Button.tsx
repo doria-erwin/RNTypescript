@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TouchableOpacity, ActivityIndicator } from 'react-native';
-import type { ButtonVariant, FontSize, FontWeight } from '~/types/';
+import type { Variant, FontSize, FontWeight } from '~/types/';
 import { colorVariants } from '~/styles/';
 import Typography from '../Typography/Typography';
 import styles from './buttonStyles';
@@ -11,7 +11,7 @@ export type Props = {
     style?: Object;
     isRounded?: boolean;
     isOutline?: boolean;
-    variant?: ButtonVariant;
+    variant?: Variant;
     disabled?: boolean;
     isProcessing?: boolean;
 

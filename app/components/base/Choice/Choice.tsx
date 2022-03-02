@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
-import type { Choice as Chc, ChoiceVariant, ChoiceValue } from '~/types';
+import type { Choice as Chc, Variant, ChoiceValue } from '~/types';
 import { borderRadius, colorVariants } from '~/styles';
 import styles from './choiceStyles';
 
 export type Props = {
     checked: boolean;
-    variant?: ChoiceVariant;
+    variant?: Variant;
     onChange: (value: ChoiceValue) => void;
     containerStyle?: Object;
     actionStyle?: Object;
