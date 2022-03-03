@@ -1,7 +1,12 @@
+import { NavigationProp, ParamListBase } from '@react-navigation/native';
 import React, { useState } from 'react';
 import LoginScreen from './LoginScreen';
 
-const LoginContainer: React.FC<any> = () => {
+type Props = {
+    navigation: NavigationProp<ParamListBase>;
+};
+
+const LoginContainer: React.FC<Props> = ({ navigation }) => {
     const [loginForm, setLoginForm] = useState<any>({
         username: '',
         password: '',
@@ -15,7 +20,7 @@ const LoginContainer: React.FC<any> = () => {
     };
 
     const handleLogin = () => {
-        throw new Error('Test error');
+        navigation.navigate('Drawer');
     };
 
     return (
